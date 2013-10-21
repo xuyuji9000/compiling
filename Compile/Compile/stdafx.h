@@ -12,7 +12,7 @@
 
 
 //宏定义
-#define PROG_LENGTH 80
-#define TOKEN_LENGTH 20
+#define PROG_LENGTH 100
+#define TOKEN_LENGTH 100
 
 // TODO: 在此处引用程序需要的其他头文件

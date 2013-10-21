@@ -85,6 +85,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			case 26:printf("[%d %s]\n",syn,token);break;
 			case 27:printf("[%d %s]\n",syn,token);break;
 			case 28:printf("[%d %s]\n",syn,token);break;
+			case 29:printf("[%d %s]\n",syn,token);break;
 		
 			}
 		} while(syn != 0);
@@ -373,7 +374,7 @@ int scaner()
 							char buf[30];
 							sprintf_s(buf,"%lf",sum);
 							string str = buf;//½«char*×ª»»Îªstring
-							str = "ERROR WORD" + str + 'e' + prog[p];
+							str = "ERROR WORD:-" + str + 'e' + prog[p];
 							cout<<str<<endl;
 							p+=1;
 							syn = -1;
@@ -399,8 +400,19 @@ int scaner()
 		case '/':
 			{
 				//ÅÐ¶Ï×¢ÊÍ
+				if(prog[p] == '*')
+				{
+					token[m++] = ch;
+					while((prog[p-2]=='*' && ch=='/')!=1)
+					{
+						ch = prog[p++];
+						token[m++] = ch;					
+					}
+					syn = 29;
+					return syn;
+				}
 				
-				syn = 16;token[0] = ch;return syn;
+				//syn = 16;token[0] = ch;return syn;
 			}
 		case '=':syn = 25;token[0] = ch;return syn;
 		case ';':syn = 26;token[0] = ch;return syn;
